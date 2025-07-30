@@ -78,7 +78,7 @@ const Footer = () => {
                 GitHub
               </a>
               <a 
-                href="/resume.pdf"
+                href="/Preetam_Maske.pdf"
                 className="text-text-secondary hover:text-accent-amber transition-colors duration-300"
               >
                 Resume

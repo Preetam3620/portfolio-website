@@ -46,7 +46,7 @@ const Hero = () => {
             Get In Touch
           </a>
           <a 
-            href="/resume.pdf" 
+            href="/Preetam_Maske.pdf" 
             className="border-2 border-accent-teal text-accent-teal px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-teal hover:text-white transition-all duration-300 transform hover:scale-105"
           >
             View Resume

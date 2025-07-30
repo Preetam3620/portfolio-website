@@ -68,21 +68,21 @@ const Education = () => {
     {
       title: 'The Complete 2021 Flutter Development Bootcamp with Dart',
       issuer: 'Udemy',
-      date: 'September 2020',
+      date: 'September 2021',
       icon: '📱',
       color: 'text-blue-400'
     },
     {
-      title: 'The Complete 2023 Web Development Bootcamp',
+      title: 'The Complete 2021 Web Development Bootcamp',
       issuer: 'Udemy', 
-      date: 'May 2020',
+      date: 'May 2021',
       icon: '🌐',
       color: 'text-green-400'
     },
     {
       title: 'Google Cloud Skills Boost Program',
       issuer: 'Google Cloud',
-      date: '2021',
+      date: 'January 2021',
       icon: '🔗',
       color: 'text-accent-teal'
     }

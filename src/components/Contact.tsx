@@ -41,7 +41,7 @@ const Contact = () => {
     {
       icon: <FileText size={24} />,
       label: 'Resume',
-      href: '/resume.pdf',
+      href: '/Preetam_Maske.pdf',
       color: 'hover:text-accent-amber'
     }
   ]
@@ -244,7 +244,7 @@ const Contact = () => {
                 Start a Project
               </a>
               <a 
-                href="/resume.pdf"
+                href="/Preetam_Maske.pdf"
                 className="border-2 border-accent-amber text-accent-amber hover:bg-accent-amber hover:text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300"
               >
                 Download Resume
