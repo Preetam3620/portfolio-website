@@ -22,9 +22,9 @@ const Education = () => {
         'Data Mining'
       ],
       achievements: [
-        'Currently pursuing advanced studies in software engineering',
-        'Focus on cloud-native application development',
-        'Research in AI-driven systems and modern architectures'
+        'Specializing in advanced software engineering methodologies and practices',
+        'Deep focus on scalable cloud architecture and microservices development', 
+        'Exploring practical AI implementation across scalable computing environments'
       ],
       color: 'from-accent-teal to-blue-500',
       icon: '🎓'

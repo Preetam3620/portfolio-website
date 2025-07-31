@@ -1,9 +1,82 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Linkedin, Github, FileText, Send } from 'lucide-react'
+import { Mail, Phone, MapPin, Linkedin, Github, FileText, Send, CheckCircle, AlertCircle } from 'lucide-react'
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // Create a hidden iframe to submit the form without leaving the page
+      const iframe = document.createElement('iframe')
+      iframe.name = 'hidden-form-frame'
+      iframe.style.display = 'none'
+      document.body.appendChild(iframe)
+
+      // Create form and submit to iframe
+      const form = document.createElement('form')
+      form.method = 'POST'
+      form.action = 'https://script.google.com/macros/s/AKfycbyI70pA2D8mLfikoIw8hpEo7j5shjBtyafjXLi7Z_s3QrdMBOf-IRid7MiSaDKRKTmsIQ/exec'
+      form.target = 'hidden-form-frame'
+      form.style.display = 'none'
+
+      // Add form data
+      const fields = [
+        { name: 'name', value: formData.name },
+        { name: 'email', value: formData.email },
+        { name: 'subject', value: formData.subject },
+        { name: 'message', value: formData.message }
+      ]
+
+      fields.forEach(field => {
+        const input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = field.name
+        input.value = field.value
+        form.appendChild(input)
+      })
+
+      document.body.appendChild(form)
+      form.submit()
+
+      // Clean up after a short delay
+      setTimeout(() => {
+        document.body.removeChild(form)
+        document.body.removeChild(iframe)
+      }, 2000)
+
+      // Show success message
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
   const contactInfo = [
     {
       icon: <Mail size={24} />,
@@ -29,7 +102,7 @@ const Contact = () => {
     {
       icon: <Linkedin size={24} />,
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/preetam-maske-b83a851a5/',
+      href: 'https://www.linkedin.com/in/preetam-maske/',
       color: 'hover:text-blue-400'
     },
     {
@@ -148,7 +221,7 @@ const Contact = () => {
               Send a Message
             </h3>
             
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
@@ -158,6 +231,9 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
                     className="w-full px-4 py-3 bg-primary border border-surface-hover rounded-xl text-text-primary placeholder-text-secondary focus:border-accent-teal focus:outline-none focus:ring-2 focus:ring-accent-teal/20 transition-colors"
                     placeholder="Your name"
                   />
@@ -170,6 +246,9 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
                     className="w-full px-4 py-3 bg-primary border border-surface-hover rounded-xl text-text-primary placeholder-text-secondary focus:border-accent-teal focus:outline-none focus:ring-2 focus:ring-accent-teal/20 transition-colors"
                     placeholder="your.email@example.com"
                   />
@@ -184,6 +263,9 @@ const Contact = () => {
                   type="text"
                   id="subject"
                   name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  required
                   className="w-full px-4 py-3 bg-primary border border-surface-hover rounded-xl text-text-primary placeholder-text-secondary focus:border-accent-teal focus:outline-none focus:ring-2 focus:ring-accent-teal/20 transition-colors"
                   placeholder="Project collaboration, job opportunity, etc."
                 />
@@ -196,20 +278,52 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   rows={6}
+                  required
                   className="w-full px-4 py-3 bg-primary border border-surface-hover rounded-xl text-text-primary placeholder-text-secondary focus:border-accent-teal focus:outline-none focus:ring-2 focus:ring-accent-teal/20 transition-colors resize-none"
                   placeholder="Tell me about your project, requirements, or just say hello!"
                 ></textarea>
               </div>
 
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="flex items-center gap-2 p-3 bg-green-500/20 border border-green-500/30 rounded-xl text-green-400">
+                  <CheckCircle size={20} />
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="flex items-center gap-2 p-3 bg-red-500/20 border border-red-500/30 rounded-xl text-red-400">
+                  <AlertCircle size={20} />
+                  Failed to send message. Please try again or contact me directly.
+                </div>
+              )}
+
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-accent-teal to-accent-amber text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-accent-teal/25 transition-all duration-300 flex items-center justify-center gap-2 group"
+                disabled={isSubmitting}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                className={`w-full px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 group ${
+                  isSubmitting 
+                    ? 'bg-surface text-text-secondary cursor-not-allowed' 
+                    : 'bg-gradient-to-r from-accent-teal to-accent-amber text-white hover:shadow-2xl hover:shadow-accent-teal/25'
+                }`}
               >
-                <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-current"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={20} className="group-hover:translate-x-1 transition-transform" />
+                    Send Message
+                  </>
+                )}
               </motion.button>
             </form>
 
