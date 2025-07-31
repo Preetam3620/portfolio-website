@@ -129,10 +129,10 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Let's Work Together</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Let&apos;s Work Together</h2>
           <div className="w-20 h-1 bg-accent-amber mx-auto rounded-full"></div>
           <p className="text-text-secondary text-lg mt-6 max-w-2xl mx-auto">
-            Ready to bring your next project to life? I'm always excited to collaborate on innovative solutions and challenging problems.
+            Ready to bring your next project to life? I&apos;m always excited to collaborate on innovative solutions and challenging problems.
           </p>
         </motion.div>
 
@@ -150,9 +150,9 @@ const Contact = () => {
                 Get In Touch
               </h3>
               <p className="text-text-secondary text-lg leading-relaxed mb-8">
-                I'm currently open to new opportunities, freelance projects, and collaborations. 
-                Whether you're looking for a full-stack developer, need consultation on cloud architecture, 
-                or want to discuss innovative AI solutions, I'd love to hear from you.
+                I&apos;m currently open to new opportunities, freelance projects, and collaborations. 
+                Whether you&apos;re looking for a full-stack developer, need consultation on cloud architecture, 
+                or want to discuss innovative AI solutions, I&apos;d love to hear from you.
               </p>
             </div>
 
@@ -291,7 +291,7 @@ const Contact = () => {
               {submitStatus === 'success' && (
                 <div className="flex items-center gap-2 p-3 bg-green-500/20 border border-green-500/30 rounded-xl text-green-400">
                   <CheckCircle size={20} />
-                  Message sent successfully! I'll get back to you soon.
+                  Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
 

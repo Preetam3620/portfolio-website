@@ -26,7 +26,7 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-lg text-text-secondary leading-relaxed">
-              I'm a <span className="text-accent-teal font-semibold">passionate Software Engineer</span> currently pursuing my Master's in Computer Software Engineering at San Jose State University. With over 2 years of professional experience at Volkswagen Group Technology Solutions, I've developed expertise in building scalable web applications and cloud infrastructure.
+              I&apos;m a <span className="text-accent-teal font-semibold">passionate Software Engineer</span> currently pursuing my Master&apos;s in Computer Software Engineering at San Jose State University. With over 2 years of professional experience at Volkswagen Group Technology Solutions, I&apos;ve developed expertise in building scalable web applications and cloud infrastructure.
             </p>
             
             <p className="text-lg text-text-secondary leading-relaxed">

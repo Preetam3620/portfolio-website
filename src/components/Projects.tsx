@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Calendar, Users, Award } from 'lucide-react'
+import { Github, Users, Award } from 'lucide-react'
 
 const Projects = () => {
 
@@ -188,7 +188,7 @@ const Projects = () => {
               More Projects Coming Soon
             </h3>
             <p className="text-text-secondary text-lg mb-6">
-              I'm constantly working on new projects and exploring cutting-edge technologies. 
+              I&apos;m constantly working on new projects and exploring cutting-edge technologies. 
               Follow my journey on GitHub to see the latest developments.
             </p>
             <a 
