@@ -99,7 +99,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -129,7 +129,7 @@ const Projects = () => {
                 </h3>
 
                 {/* Description */}
-                <p className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-4 md:line-clamp-3">
                   {project.description}
                 </p>
 
@@ -164,7 +164,7 @@ const Projects = () => {
                 <div className="mt-auto">
                   <a 
                     href={project.githubUrl}
-                    className="w-full border border-accent-teal/30 hover:bg-accent-teal hover:text-white text-accent-teal px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    className="w-full border border-accent-teal/30 hover:bg-accent-teal hover:text-white text-accent-teal px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 group/btn min-h-[44px]"
                   >
                     <Github size={16} className="group-hover/btn:scale-110 transition-transform" />
                     View Code

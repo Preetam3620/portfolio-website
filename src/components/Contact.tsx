@@ -222,7 +222,7 @@ const Contact = () => {
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
                     Name
@@ -353,13 +353,13 @@ const Contact = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="mailto:preetam.a.maske@gmail.com"
-                className="bg-accent-teal hover:bg-accent-teal/80 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg"
+                className="w-full sm:w-auto bg-accent-teal hover:bg-accent-teal/80 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg min-h-[48px] flex items-center justify-center"
               >
                 Start a Project
               </a>
               <a 
                 href="/Preetam_Maske.pdf"
-                className="border-2 border-accent-amber text-accent-amber hover:bg-accent-amber hover:text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300"
+                className="w-full sm:w-auto border-2 border-accent-amber text-accent-amber hover:bg-accent-amber hover:text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300 min-h-[48px] flex items-center justify-center"
               >
                 Download Resume
               </a>

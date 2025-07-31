@@ -71,7 +71,7 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
@@ -79,7 +79,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-surface rounded-2xl p-6 border border-accent-teal/10 hover:border-accent-teal/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent-teal/10 hover:transform hover:-translate-y-2"
+              className="bg-surface rounded-2xl p-4 md:p-6 border border-accent-teal/10 hover:border-accent-teal/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent-teal/10 hover:transform hover:-translate-y-2"
             >
               <div className="flex items-center mb-4">
                 <span className="text-3xl mr-3">{category.icon}</span>

@@ -18,7 +18,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-display text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-accent-teal to-accent-amber bg-clip-text text-transparent"
+          className="font-display text-4xl sm:text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-accent-teal to-accent-amber bg-clip-text text-transparent"
         >
           Preetam Maske
         </motion.h1>
@@ -27,7 +27,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-3xl text-text-secondary mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg sm:text-xl md:text-3xl text-text-secondary mb-12 max-w-3xl mx-auto leading-relaxed"
         >
           Full Stack Developer & Software Engineer specializing in modern web technologies, 
           cloud solutions, and scalable applications
@@ -41,13 +41,13 @@ const Hero = () => {
         >
           <a 
             href="#contact" 
-            className="bg-gradient-to-r from-accent-teal to-accent-amber text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-accent-teal/25 transition-all duration-300 transform hover:scale-105"
+            className="w-full sm:w-auto bg-gradient-to-r from-accent-teal to-accent-amber text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-accent-teal/25 transition-all duration-300 transform hover:scale-105 min-h-[48px] flex items-center justify-center"
           >
             Get In Touch
           </a>
           <a 
             href="/Preetam_Maske.pdf" 
-            className="border-2 border-accent-teal text-accent-teal px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-teal hover:text-white transition-all duration-300 transform hover:scale-105"
+            className="w-full sm:w-auto border-2 border-accent-teal text-accent-teal px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-teal hover:text-white transition-all duration-300 transform hover:scale-105 min-h-[48px] flex items-center justify-center"
           >
             View Resume
           </a>

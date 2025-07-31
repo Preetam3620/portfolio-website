@@ -108,7 +108,7 @@ const Education = () => {
         {/* Education Timeline */}
         <div className="relative mb-20">
           {/* Timeline line */}
-          <div className="absolute left-8 w-1 h-full bg-gradient-to-b from-accent-amber via-accent-teal to-accent-amber rounded-full"></div>
+          <div className="absolute left-4 md:left-8 w-1 h-full bg-gradient-to-b from-accent-amber via-accent-teal to-accent-amber rounded-full"></div>
 
           <div className="space-y-16">
             {education.map((edu, index) => (
@@ -118,16 +118,16 @@ const Education = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.3 }}
                 viewport={{ once: true }}
-                className="relative flex items-start gap-8"
+                className="relative flex items-start gap-4 md:gap-8"
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-r from-accent-amber to-accent-teal rounded-full border-4 border-surface shadow-lg z-10 flex items-center justify-center text-2xl">
+                <div className="absolute left-4 md:left-8 transform -translate-x-1/2 w-8 h-8 md:w-12 md:h-12 bg-gradient-to-r from-accent-amber to-accent-teal rounded-full border-2 md:border-4 border-surface shadow-lg z-10 flex items-center justify-center text-lg md:text-2xl">
                   {edu.icon}
                 </div>
 
                 {/* Content card */}
-                <div className="flex-1 ml-20">
-                  <div className="bg-primary rounded-2xl p-8 border border-accent-amber/20 hover:border-accent-amber/40 transition-all duration-300 hover:shadow-2xl hover:shadow-accent-amber/10 group min-h-[500px] flex flex-col">
+                <div className="flex-1 ml-8 md:ml-20">
+                  <div className="bg-primary rounded-2xl p-4 md:p-8 border border-accent-amber/20 hover:border-accent-amber/40 transition-all duration-300 hover:shadow-2xl hover:shadow-accent-amber/10 group min-h-[400px] md:min-h-[500px] flex flex-col">
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-6">
                       <div className="flex-1">
@@ -167,7 +167,7 @@ const Education = () => {
                         <BookOpen size={18} className="text-accent-teal" />
                         <h4 className="font-display text-lg font-semibold text-accent-teal">Relevant Coursework</h4>
                       </div>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mb-6">
                         {edu.coursework.map((course, courseIndex) => (
                           <motion.span
                             key={course}

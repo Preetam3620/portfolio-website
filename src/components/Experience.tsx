@@ -69,7 +69,7 @@ const Experience = () => {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 w-1 h-full bg-gradient-to-b from-accent-teal via-accent-amber to-accent-teal rounded-full transform -translate-x-1/2"></div>
+          <div className="absolute left-4 md:left-8 w-1 h-full bg-gradient-to-b from-accent-teal via-accent-amber to-accent-teal rounded-full transform -translate-x-1/2"></div>
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -79,14 +79,14 @@ const Experience = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="relative flex items-start gap-8"
+                className="relative flex items-start gap-4 md:gap-8"
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-accent-teal to-accent-amber rounded-full border-4 border-primary shadow-lg z-10"></div>
+                <div className="absolute left-4 md:left-8 transform -translate-x-1/2 w-4 h-4 md:w-6 md:h-6 bg-gradient-to-r from-accent-teal to-accent-amber rounded-full border-2 md:border-4 border-primary shadow-lg z-10"></div>
 
                 {/* Content card */}
-                <div className="flex-1 ml-20">
-                  <div className="bg-surface rounded-2xl p-8 border border-accent-teal/10 hover:border-accent-teal/30 transition-all duration-300 hover:shadow-2xl hover:shadow-accent-teal/10 group min-h-[400px] flex flex-col">
+                <div className="flex-1 ml-8 md:ml-20">
+                  <div className="bg-surface rounded-2xl p-4 md:p-8 border border-accent-teal/10 hover:border-accent-teal/30 transition-all duration-300 hover:shadow-2xl hover:shadow-accent-teal/10 group min-h-[300px] md:min-h-[400px] flex flex-col">
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
                       <div>
