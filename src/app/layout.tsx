@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Rubik } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -32,6 +33,7 @@ export default function RootLayout({
         className={`${inter.variable} ${rubik.variable} bg-primary text-text-primary font-sans antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
