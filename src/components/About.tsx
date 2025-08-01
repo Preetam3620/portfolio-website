@@ -87,19 +87,19 @@ const About = () => {
               <ul className="space-y-3 text-text-secondary">
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-accent-amber rounded-full mr-3"></span>
+                  UC Berkeley AI Hackathon - Best Deployment with Fetch.ai (2025)
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-accent-amber rounded-full mr-3"></span>
+                  End-to-end ownership of multiple production systems
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-accent-amber rounded-full mr-3"></span>
                   AWS Certified Solutions Architect (2024)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-accent-amber rounded-full mr-3"></span>
                   ISTE Hack-SPRINT v3.0 Runner Up (2021)
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent-amber rounded-full mr-3"></span>
-                  Led team of 6 interns in mobile development
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent-amber rounded-full mr-3"></span>
-                  End-to-end ownership of multiple production systems
                 </li>
               </ul>
             </div>
