@@ -98,14 +98,13 @@ export default function Projects() {
             <motion.div
               key={project.title}
               variants={cardVariant}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-zinc-700 hover:shadow-xl hover:shadow-black/40 transition-[border-color,box-shadow]"
+              className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-zinc-700 transition-colors"
             >
               {/* Image area */}
               <div className="relative h-48 bg-zinc-800 border-b border-zinc-700/60 overflow-hidden flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-850 to-zinc-900 opacity-80" />
-                <span className="relative text-zinc-600 text-sm font-medium tracking-wide">
+                <span className="text-zinc-600 text-sm font-medium tracking-wide">
                   {project.title}
                 </span>
                 <span className="absolute top-3 left-4 text-zinc-700 font-bold text-2xl select-none">
@@ -131,14 +130,9 @@ export default function Projects() {
 
                 <div className="flex flex-wrap gap-2 mb-5">
                   {project.tags.map((tag) => (
-                    <motion.span
-                      key={tag}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.15 }}
-                      className="bg-zinc-800 border border-zinc-700 text-zinc-300 text-xs px-3 py-1 rounded-full hover:bg-zinc-700 hover:border-zinc-600 transition-colors cursor-default"
-                    >
+                    <span key={tag} className="pill">
                       {tag}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
 

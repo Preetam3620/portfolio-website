@@ -69,14 +69,9 @@ export default function Skills() {
               </span>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
-                  <motion.span
-                    key={skill}
-                    whileHover={{ scale: 1.07 }}
-                    transition={{ duration: 0.15 }}
-                    className="bg-zinc-800 border border-zinc-700 text-zinc-300 text-xs px-3 py-1.5 rounded-full cursor-default hover:bg-zinc-700 hover:border-zinc-600 hover:text-white transition-colors"
-                  >
+                  <span key={skill} className="pill">
                     {skill}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
             </motion.div>

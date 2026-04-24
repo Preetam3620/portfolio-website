@@ -1,14 +1,14 @@
 export default function Footer() {
   return (
     <footer className="border-t border-zinc-800/60 py-8 px-4 sm:px-6">
-      <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-gray-600 text-sm">
+      <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-zinc-600 text-sm">
         <p>© 2025 Preetam Maske. All rights reserved.</p>
         <div className="flex items-center gap-4">
           <a
             href="https://github.com/Preetam3620"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-400 transition-colors"
+            className="hover:text-zinc-400 transition-colors"
             aria-label="GitHub"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -17,7 +17,7 @@ export default function Footer() {
           </a>
           <a
             href="mailto:preetam.a.maske@gmail.com"
-            className="hover:text-gray-400 transition-colors"
+            className="hover:text-zinc-400 transition-colors"
             aria-label="Email"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
