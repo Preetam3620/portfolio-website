@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 
 const projects = [
@@ -160,21 +160,94 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 }
 
 export default function Projects() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateButtons = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    updateButtons();
+    el.addEventListener("scroll", updateButtons, { passive: true });
+    return () => el.removeEventListener("scroll", updateButtons);
+  }, [updateButtons]);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    // Scroll by the visible width (2 cards)
+    el.scrollBy({ left: dir === "left" ? -el.clientWidth : el.clientWidth, behavior: "smooth" });
+  };
+
   return (
     <div className="mt-16 flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0">
       <div className="w-full md:w-36 flex-shrink-0">
         <h2 className="text-base font-medium text-white">Projects</h2>
       </div>
       <motion.div
-        className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="flex-1 min-w-0"
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
-        ))}
+        {/* Scroll controls */}
+        <div className="flex items-center justify-end gap-2 mb-3">
+          <button
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            className="flex items-center justify-center w-8 h-8 rounded-full transition-colors disabled:opacity-25"
+            style={{ backgroundColor: "#1C1C1C", border: "1px solid #383838", color: "#9B9B9B" }}
+            onMouseEnter={(e) => { if (canScrollLeft) e.currentTarget.style.borderColor = "#525252"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#383838"; }}
+            aria-label="Scroll left"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            className="flex items-center justify-center w-8 h-8 rounded-full transition-colors disabled:opacity-25"
+            style={{ backgroundColor: "#1C1C1C", border: "1px solid #383838", color: "#9B9B9B" }}
+            onMouseEnter={(e) => { if (canScrollRight) e.currentTarget.style.borderColor = "#525252"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#383838"; }}
+            aria-label="Scroll right"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Horizontal scroll row — 2 cards visible, rest scrollable */}
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto pb-4"
+          style={{
+            scrollSnapType: "x mandatory",
+            msOverflowStyle: "none",
+            scrollbarWidth: "none",
+          }}
+        >
+          {projects.map((project) => (
+            <div
+              key={project.title}
+              className="flex-shrink-0 w-[calc(50%-12px)] min-w-[280px]"
+              style={{ scrollSnapAlign: "start" }}
+            >
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
       </motion.div>
     </div>
   );

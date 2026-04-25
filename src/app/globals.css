@@ -17,6 +17,11 @@ body {
   }
 }
 
+/* Hide scrollbar visually while keeping scroll functionality */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
 @layer components {
   .pill {
     @apply inline-block px-2 py-1 text-xs font-medium text-gray-300 rounded-md cursor-default;
