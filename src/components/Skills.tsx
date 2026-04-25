@@ -1,16 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { stagger } from "@/lib/animations";
 
 const categories = [
   {
+    name: "Languages",
+    skills: ["Python", "JavaScript", "TypeScript", "Java", "C++", "C#", "SQL", "Dart"],
+  },
+  {
     name: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "JavaScript", "Angular", "Flutter", "Dart"],
+    skills: ["React", "Next.js", "Angular", "Flutter", "HTML", "CSS", "Tailwind CSS"],
   },
   {
     name: "Backend",
-    skills: ["Node.js", "Python", "Flask", "Express.js", "REST APIs", "GraphQL", "Microservices", "Shell Scripting", "FastAPI"],
+    skills: ["Node.js", "FastAPI", "Flask", "Express.js", "REST APIs", "GraphQL", "Microservices", "Shell Scripting"],
+  },
+  {
+    name: "AI & Data",
+    skills: ["LangGraph", "LangChain", "RAG Pipelines", "Pinecone", "Deepgram", "Voice Processing", "Computer Vision OCR"],
   },
   {
     name: "Cloud & Database",
@@ -20,65 +27,37 @@ const categories = [
     name: "Tools & Frameworks",
     skills: ["Git", "Kafka", "Atlassian Bamboo", "CircleCI", "Terraform", "Bitbucket", "CI/CD", "Linux"],
   },
-  {
-    name: "AI & Emerging Tech",
-    skills: ["LangGraph", "LangChain", "RAG Pipelines", "Pinecone", "Deepgram", "Voice Processing", "Computer Vision OCR"],
-  },
-  {
-    name: "Languages",
-    skills: ["Python", "JavaScript", "TypeScript", "Java", "C++", "C#", "SQL", "Dart"],
-  },
 ];
-
-const rowVariant = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-};
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 border-t border-zinc-800/60">
-      <div className="max-w-3xl mx-auto">
-
-        <motion.div
-          className="flex items-center gap-4 mb-10"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-2xl font-semibold text-white whitespace-nowrap">Technical Skills</h2>
-          <div className="flex-1 h-px bg-zinc-800" />
-        </motion.div>
-
-        <motion.div
-          className="space-y-7"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-        >
-          {categories.map(({ name, skills }) => (
-            <motion.div
-              key={name}
-              variants={rowVariant}
-              className="flex flex-col sm:flex-row sm:items-start gap-3"
-            >
-              <span className="text-xs font-semibold text-zinc-500 uppercase tracking-widest sm:w-36 shrink-0 pt-1.5">
-                {name}
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <span key={skill} className="pill">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
+    <div className="mt-16 flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0">
+      <div className="w-full md:w-36 flex-shrink-0">
+        <h2 className="text-base font-medium text-white">Technical Skills</h2>
       </div>
-    </section>
+      <motion.div
+        className="flex-1 w-full space-y-4"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        {categories.map(({ name, skills }) => (
+          <div key={name} className="flex items-center">
+            <div className="flex-shrink-0">
+              <h3 className="text-base font-medium text-white">{name}</h3>
+            </div>
+            <div className="flex-1 mx-8 border-b" style={{ borderColor: "#383838" }} />
+            <div className="flex flex-wrap gap-1.5 justify-end">
+              {skills.map((skill) => (
+                <span key={skill} className="pill">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </div>
   );
 }

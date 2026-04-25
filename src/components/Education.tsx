@@ -1,85 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { stagger } from "@/lib/animations";
 
 const education = [
   {
-    degree: "MS Computer Software Engineering",
+    degree: "Master's in Computer Software Engineering",
     school: "San Jose State University",
     period: "Aug 2024 – May 2026",
     location: "San Jose, CA",
-    coursework: ["Systems Software Engineering", "Cloud Technologies", "Distributed Systems", "Scalable System Design"],
+    description:
+      "Focused on systems software engineering, cloud technologies, distributed systems, and scalable system design. Coursework in advanced algorithms, cloud infrastructure, and AI/ML applications.",
   },
   {
-    degree: "BE Computer Engineering",
+    degree: "Bachelor's in Computer Engineering",
     school: "Savitribai Phule Pune University",
     period: "Jul 2018 – Jul 2022",
     location: "Pune, India",
-    coursework: ["Data Structures & Algorithms", "Object Oriented Programming", "Database Management", "Cloud Computing"],
+    description:
+      "Comprehensive study of data structures, algorithms, web development, and database systems with a strong foundation in computer engineering principles. Coursework in OOP, cloud computing, and database management.",
   },
 ];
 
-const cardVariant = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-};
-
 export default function Education() {
   return (
-    <section id="education" className="py-24 px-4 sm:px-6 border-t border-zinc-800/60">
-      <div className="max-w-3xl mx-auto">
-
-        <motion.div
-          className="flex items-center gap-4 mb-10"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-2xl font-semibold text-white whitespace-nowrap">Education</h2>
-          <div className="flex-1 h-px bg-zinc-800" />
-        </motion.div>
-
-        <motion.div
-          className="space-y-4"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {education.map((edu, i) => (
-            <motion.div
-              key={i}
-              variants={cardVariant}
-              className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition-colors"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                <h3 className="text-white font-semibold text-base">{edu.degree}</h3>
-                <span className="text-zinc-500 text-xs bg-zinc-800 border border-zinc-700 px-2.5 py-0.5 rounded-full self-start shrink-0">
-                  {edu.period}
-                </span>
-              </div>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mb-4">
-                <span className="text-blue-400 text-sm font-medium">{edu.school}</span>
-                <span className="text-zinc-700">·</span>
-                <span className="text-zinc-500 text-sm">{edu.location}</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {edu.coursework.map((course) => (
-                  <span
-                    key={course}
-                    className="bg-zinc-800 border border-zinc-700 text-zinc-400 text-xs px-3 py-1 rounded-full"
-                  >
-                    {course}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
+    <div className="mt-16 flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0">
+      <div className="w-full md:w-36 flex-shrink-0">
+        <h2 className="text-base font-medium text-white">Education</h2>
       </div>
-    </section>
+      <motion.div
+        className="flex-1 space-y-4"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        {education.map((edu, i) => (
+          <div
+            key={i}
+            className="rounded-2xl p-6 mb-4 w-full text-left shadow-sm"
+            style={{ backgroundColor: "#181818", border: "1px solid #383838", color: "#D1D1D1" }}
+          >
+            <div className="text-sm font-normal mb-1" style={{ color: "#A0A0A0" }}>{edu.degree}</div>
+            <div className="font-medium text-white mb-1">{edu.school}</div>
+            <div className="text-sm font-normal mb-3" style={{ color: "#A0A0A0" }}>
+              {edu.period} · {edu.location}
+            </div>
+            <div className="text-sm font-normal leading-relaxed" style={{ color: "#B0B0B0" }}>
+              {edu.description}
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </div>
   );
 }

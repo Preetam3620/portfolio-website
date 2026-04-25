@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background-color: #0a0a0a;
+  background-color: #141414;
   color: #ffffff;
 }
 
@@ -18,14 +18,9 @@ body {
 }
 
 @layer components {
-  /* Default pill — skill tags, project tags, coursework pills */
   .pill {
-    @apply bg-zinc-800 border border-zinc-700 text-zinc-300 text-xs px-3 py-1.5 rounded-full
-           hover:border-zinc-600 hover:text-white transition-colors cursor-default;
-  }
-
-  /* Subdued badge — year labels, date ranges */
-  .pill-sm {
-    @apply bg-zinc-800 border border-zinc-700 text-zinc-500 text-xs px-2.5 py-0.5 rounded-full;
+    @apply inline-block px-2 py-1 text-xs font-medium text-gray-300 rounded-md cursor-default;
+    background-color: #171717;
+    border: 1px solid #262626;
   }
 }
