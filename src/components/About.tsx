@@ -19,12 +19,11 @@ export default function About() {
           <p className="text-base leading-normal" style={{ color: "#9B9B9B" }}>
             I&apos;m a passionate Software Engineer currently pursuing my Master&apos;s in Computer
             Software Engineering at San Jose State University. With over 2 years of professional
-            experience at Volkswagen Group Technology Solutions, I&apos;ve developed expertise in
+            experience at Volkswagen, I&apos;ve developed expertise in
             building scalable web applications and cloud infrastructure.
           </p>
           <p className="text-base leading-normal" style={{ color: "#9B9B9B" }}>
-            My journey spans from building enterprise-scale systems at Volkswagen serving 10,000+
-            users to projects like Rufus, an AI shopping assistant using LangGraph multi-agent
+            My journey spans from building enterprise-scale systems at Volkswagen to projects like Rufus, an AI shopping assistant using LangGraph multi-agent
             workflows, and AlphaRescue, an AI-driven emergency dispatch system. I specialize in
             backend engineering and full-stack development with technologies like Python, Node.js,
             FastAPI, and AWS.

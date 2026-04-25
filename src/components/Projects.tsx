@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const projects = [
@@ -13,7 +14,7 @@ const projects = [
     tags: ["LangGraph", "GPT-4o", "Pinecone", "FastAPI", "Redis"],
     github: "https://github.com/Preetam3620/AI-Shopping-Assistant.git",
     liveUrl: null,
-    gradient: "from-[#1a1a2e] via-[#16213e] to-[#0f3460]",
+    image: "/Rufus.png",
   },
   {
     title: "AlphaRescue",
@@ -24,7 +25,7 @@ const projects = [
     tags: ["VAPI", "Gemini", "Fetch.ai", "Supabase", "React", "Mapbox"],
     github: "https://github.com/Preetam3620/Alpha-Rescue.git",
     liveUrl: null,
-    gradient: "from-[#1a0a0a] via-[#2d1515] to-[#3d1a1a]",
+    image: "/AlphaRescue.png",
   },
   {
     title: "BookTable",
@@ -35,7 +36,7 @@ const projects = [
     tags: ["FastAPI", "PostgreSQL", "Redis", "AWS EC2", "Terraform"],
     github: "https://github.com/Preetam3620/BookTable-App.git",
     liveUrl: null,
-    gradient: "from-[#0a1a0a] via-[#0d2b0d] to-[#133d13]",
+    image: "/BookTable.png",
   },
   {
     title: "Reflectra",
@@ -46,7 +47,7 @@ const projects = [
     tags: ["Python", "Reflex", "OpenAI", "Deepgram"],
     github: "https://github.com/somesh-bagadiya/Reflectra.git",
     liveUrl: null,
-    gradient: "from-[#1a1a0a] via-[#2b2b0d] to-[#3a3a12]",
+    image: "/Reflectra.jpg",
   },
   {
     title: "Fluento",
@@ -57,7 +58,7 @@ const projects = [
     tags: ["Flutter", "Dart", "Firebase", "Android"],
     github: "https://github.com/Preetam3620/fluento_app_web.git",
     liveUrl: null,
-    gradient: "from-[#0a0a1a] via-[#0d0d2d] to-[#12124a]",
+    image: "/Fluento.png",
   },
   {
     title: "IRIS",
@@ -68,7 +69,7 @@ const projects = [
     tags: ["Angular", "Node.js", "Flask", "MongoDB"],
     github: null,
     liveUrl: null,
-    gradient: "from-[#1a0a1a] via-[#2d0d2d] to-[#3d1240]",
+    image: "/IRIS.png",
   },
 ];
 
@@ -85,9 +86,14 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#525252")}
       onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#383838")}
     >
-      {/* Image / Gradient placeholder */}
-      <div className={`relative overflow-hidden w-full h-[180px] bg-gradient-to-br ${project.gradient} flex items-end p-4`}>
-        <span className="text-white/20 text-4xl font-bold select-none">{project.title}</span>
+      {/* Project screenshot */}
+      <div className="relative w-full h-[180px] overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover object-top"
+        />
       </div>
 
       {/* Card body */}
@@ -159,10 +165,16 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   );
 }
 
+const AUTO_SCROLL_INTERVAL = 10000;
+const PAUSE_AFTER_CLICK = 6000;
+
 export default function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const pausedRef = useRef(false);
+  const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const autoTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const updateButtons = useCallback(() => {
     const el = scrollRef.current;
@@ -179,10 +191,36 @@ export default function Projects() {
     return () => el.removeEventListener("scroll", updateButtons);
   }, [updateButtons]);
 
+  useEffect(() => {
+    autoTimerRef.current = setInterval(() => {
+      if (pausedRef.current) return;
+      const el = scrollRef.current;
+      if (!el) return;
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+      if (atEnd) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: el.clientWidth / 2, behavior: "smooth" });
+      }
+    }, AUTO_SCROLL_INTERVAL);
+
+    return () => {
+      if (autoTimerRef.current) clearInterval(autoTimerRef.current);
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    };
+  }, []);
+
+  const pauseAutoScroll = () => {
+    pausedRef.current = true;
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => {
+      pausedRef.current = false;
+    }, PAUSE_AFTER_CLICK);
+  };
+
   const scroll = (dir: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
-    // Scroll by the visible width (2 cards)
     el.scrollBy({ left: dir === "left" ? -el.clientWidth : el.clientWidth, behavior: "smooth" });
   };
 
@@ -231,6 +269,7 @@ export default function Projects() {
         {/* Horizontal scroll row — 2 cards visible, rest scrollable */}
         <div
           ref={scrollRef}
+          onClick={pauseAutoScroll}
           className="flex gap-6 overflow-x-auto pb-4"
           style={{
             scrollSnapType: "x mandatory",
