@@ -17,20 +17,21 @@ export default function About() {
       >
         <div className="space-y-3">
           <p className="text-base leading-normal" style={{ color: "#9B9B9B" }}>
-            I&apos;m a passionate Software Engineer currently pursuing my Master&apos;s in Computer
-            Software Engineering at San Jose State University. With over 2 years of professional
-            experience at Volkswagen, I&apos;ve developed expertise in
-            building scalable web applications and cloud infrastructure.
+            Most people care about how an app looks. I care about how it holds up at 3:00 AM when
+            traffic spikes in Europe while the US is just waking up. My time at Volkswagen was a
+            masterclass in global reliability; two years ensuring backends stayed upright across
+            regions and time zones. When you&apos;re building at that scale, event-driven architecture
+            and cloud-native design aren&apos;t just options, they&apos;re survival tactics.
           </p>
           <p className="text-base leading-normal" style={{ color: "#9B9B9B" }}>
-            My journey spans from building enterprise-scale systems at Volkswagen to projects like Rufus, an AI shopping assistant using LangGraph multi-agent
-            workflows, and AlphaRescue, an AI-driven emergency dispatch system. I specialize in
-            backend engineering and full-stack development with technologies like Python, Node.js,
-            FastAPI, and AWS.
+            My recent work has pulled me toward AI-native application development where AI Agents do
+            real work, not just surface-level automation. A good example is AlphaRescue, an
+            autonomous emergency dispatch system that listens to live distress calls, reasons about
+            the situation, and coordinates the right response without a human in the loop.
           </p>
           <p className="text-base leading-normal" style={{ color: "#9B9B9B" }}>
-            I believe in continuous learning and have a track record of mentoring teams, winning
-            hackathons, and delivering end-to-end solutions from requirement gathering to deployment.
+            I recently graduated with a Master&apos;s in Computer Software Engineering from SJSU,
+            and I&apos;m drawn to work where the problems are genuinely hard and the stakes are real.
           </p>
         </div>
       </motion.div>
