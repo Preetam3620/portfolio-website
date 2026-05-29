@@ -6,6 +6,17 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    title: "CloudKraft",
+    subtitle: "Cloud Workflow Orchestration Tool",
+    year: "2026",
+    description:
+      "Describe your AWS stack in plain English, CloudKraft generates a live canvas and a LangGraph multi-provider AI chat helps you iterate on it. Drag, connect, and deploy real infrastructure. Deployments run actual terraform apply in isolated workspaces with live log streaming",
+    tags: ["FastAPI", "TypeScript", "Terraform", "LangGraph", "AWS"],
+    github: "https://github.com/Preetam3620/CloudKraftBE",
+    liveUrl: "https://cloud-kraft-fe.vercel.app/",
+    image: "/CloudKraft.png",
+  },
+  {
     title: "Rufus",
     subtitle: "AI-Powered Shopping Assistant",
     year: "2025",
@@ -13,7 +24,7 @@ const projects = [
       "AI-powered shopping assistant using a LangGraph multi-agent workflow that routes conversational, text, and image queries through GPT-4o, improving recommendation relevance by 40%. Features a Pinecone semantic retrieval pipeline with multi-stage re-ranking and a stateful FastAPI backend with Redis session persistence delivering under 800ms P95 latency.",
     tags: ["LangGraph", "GPT-4o", "Pinecone", "FastAPI", "Redis"],
     github: "https://github.com/Preetam3620/AI-Shopping-Assistant.git",
-    liveUrl: null,
+    liveUrl: "https://huggingface.co/spaces/Preetam-3620/rufus-space",
     image: "/Rufus.png",
   },
   {
@@ -68,7 +79,7 @@ const projects = [
       "Enterprise OCR-based invoice processing system built at Volkswagen. Supports 1000+ users with automated deployment pipelines and Microsoft Computer Vision integration.",
     tags: ["Angular", "Node.js", "Flask", "MongoDB"],
     github: null,
-    liveUrl: null,
+    liveUrl: "https://invoice.vwits.net/VWITS/#/",
     image: "/IRIS.png",
   },
 ];
