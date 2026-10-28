@@ -30,7 +30,7 @@ const contactItems = [
   {
     label: "Resume",
     value: "Download",
-    href: "/Preetam_Maske.pdf",
+    href: "/Preetam_Resume.pdf",
     external: true,
   },
 ];
